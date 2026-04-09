@@ -1,0 +1,29 @@
+# Виртуальное окружение
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Локальные данные (не копируем в образ!)
+screenshots/
+logs/
+state/
+*.log
+*.jpg
+*.png
+
+# Конфиги среды разработки
+.env
+*.env.local
+.idea/
+.vscode/
+*.swp
+
+# Docker-артефакты
+*.tar
+*.gz
+docker-compose.override.yml
+
+# Тестовые скрипты (если не нужны в образе)
+test_*.py

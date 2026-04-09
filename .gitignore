@@ -1,0 +1,10 @@
+.env
+screenshots/
+*.jpg
+*.png
+
+# Логи бота
+bot.log
+venv/
+
+*.tar

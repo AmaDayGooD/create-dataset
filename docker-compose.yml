@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  screenshot-bot:
+    image: 152amaday152/screenshot-bot:latest
+    container_name: screenshot-bot
+    restart: unless-stopped
+    
+    # Переменные окружения из .env
+    env_file:
+      - .env
+    
+    environment:
+      - TZ=Europe/Moscow
+    
+    # Тома для сохранения данных
+    volumes:
+      # Скриншоты
+      - ./screenshots:/app/screenshots
+      # Логи (опционально, чтобы не терялись при перезапуске)
+      - ./logs:/app/logs
+    
+    # Важно для Playwright/Chrome!
+    shm_size: '2gb'
+    
+    # Аргументы для стабильной работы headless браузера
+    cap_add:
+      - SYS_ADMIN
+    
+    # Логирование
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
